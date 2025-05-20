@@ -1,0 +1,11 @@
+wp/node_modules
+wpv2/node_modules
+
+
+# git repos
+wp/.git
+wpv2/.git
+
+# Themes
+themes/kwp/simplistica/node_modules
+themes/hwphp
