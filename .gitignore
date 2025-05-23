@@ -14,7 +14,7 @@ themes/hwphp
 lib/build/front/node_modules
 lib/build/admin/node_modules
 lib/build/api/node_modules
-lib/build/api/src/lib
+lib/build/api/src/lib/*
 
 #core
 
