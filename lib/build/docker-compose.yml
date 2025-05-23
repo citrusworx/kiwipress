@@ -31,9 +31,9 @@ services:
     networks:
       - kiwinet
 
-  kiwi_api:
+  wp_api:
     image: wordpress:php8.2-apache
-    container_name: kiwiapi
+    container_name: wp_api
     restart: unless-stopped
     environment:
       WORDPRESS_DB_HOST: wpdb:3306
@@ -49,34 +49,49 @@ services:
     networks:
       - kiwinet
 
+  kiwi_api:
+    build:
+      context: ./
+      dockerfile: ./api/Dockerfile
+    container_name: kiwi_api
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    volumes:
+      - wordpress_data:/var/www/html
+    depends_on:
+      - wpdb
+    networks:
+      - kiwinet
+
   kiwi_admin:
     build:
       context: ./admin
-    dockerfile: ../docker/back/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: kiwipress_admin
     working_dir: /app
     ports:
-      - "4000:4000"
+      - "3000:3000"
     volumes:
       - kiwiadmin_data:/app
     networks:
       - kiwinet
     restart: unless-stopped
     depends_on:
-      - kiwiapi
+      - kiwi_api
 
   kiwi_front:
     build:
-      context: ./frontend
-    dockerfile: ../docker/front/Dockerfile
+      context: ./front
+      dockerfile: ./Dockerfile
     container_name: kiwi_front
     working_dir: /app
     ports:
-      - "3000:3000"
+      - "3001:3001"
     volumes:
       - kiwi_front_data:/app
     networks:
       - kiwinet
     restart: unless-stopped
     depends_on:
-      - kiwiapi
+      - kiwi_api

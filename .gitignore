@@ -9,3 +9,8 @@ wpv2/.git
 # Themes
 themes/kwp/simplistica/node_modules
 themes/hwphp
+
+# Build
+lib/build/front/node_modules
+lib/build/admin/node_modules
+lib/build/api/node_modules

@@ -1,0 +1,9 @@
+
+function Nav(){
+    $data = "data";
+    return(
+        <div>
+            <p>[$data]</p>
+        </div>
+    )
+}
