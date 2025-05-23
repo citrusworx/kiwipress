@@ -31,7 +31,7 @@ interface PostSlugConfig{
     }
 }
 
-class WPData { 
+export default class WPData { 
     private wpurl = {
         base: '/wp-json/wp/v2',
         forum: '',
