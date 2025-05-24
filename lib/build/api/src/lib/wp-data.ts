@@ -59,7 +59,7 @@ export default class WPData {
 
     // TODO: Need to get comment and author data which is pulled from another source in the WP API
     async getPostById(id: number, url: string): Promise<PostIdConfig["response"]> {
-        const response = await fetch(url);
+        const response = await fetch(url + id);
         const postData = await response.json()  as WPPost;
         const post = postData
         return {
